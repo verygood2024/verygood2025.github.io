@@ -1,0 +1,126 @@
+/* ===== 空白框架 Empty Box ===== */
+.emptybox {
+    width: 65rem;
+    height: 40rem;
+    flex-shrink: 0;
+    overflow: hidden;
+
+    font-size: 6rem;
+    font-weight: 900;
+    text-transform: uppercase;
+
+
+    border-radius: 5rem;
+    -webkit-box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+
+
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    border: 0.8px solid rgba(255, 255, 255, 0.18);
+    box-shadow: rgba(142, 142, 142, 0.19) 0px 6px 15px 0px;
+}
+
+/* 移动端响应式 */
+@media (max-width: 768px) {
+    .emptybox {
+        width: 90%;
+        height: 30rem;
+    }
+}
+
+/* ===== 滚动容器 Scroll Box ===== */
+.scrollbox {
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    overflow: hidden;
+    background-image: url('../image/1.png');
+    background-attachment: fixed;
+
+}
+
+.scrollbox_container {
+    justify-content: flex-start;
+    height: 100vh;
+    flex-shrink: 0;
+    will-change: transform;
+}
+
+.scrollbox_container_card {
+    position: relative;
+    margin-left: 5rem;
+    width: 65rem;
+    height: 40rem;
+    flex-shrink: 0;
+    overflow: hidden;
+
+    font-size: 6rem;
+    font-weight: 900;
+    text-transform: uppercase;
+
+
+    border-radius: 5rem;
+    -webkit-box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+
+
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    border: 0.8px solid rgba(255, 255, 255, 0.18);
+    box-shadow: rgba(142, 142, 142, 0.19) 0px 6px 15px 0px;
+}
+
+
+.scrollbox_container_card p {
+    font-size: 6rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+/* ===== 城市与卡车图层 ===== */
+.scc_city,
+.scc_truck {
+    position: absolute;
+    bottom: 0;
+    will-change: transform;
+}
+
+.scc_city {
+    height: 100%;
+    opacity: 0.7;
+}
+
+.scc_truck {
+    height: 6rem;
+}
+
+/* ===== 分组定位（使用循环式命名） ===== */
+.scc_city1, .scc_truck1 {
+    left: 0;
+}
+
+.scc_city2, .scc_truck2 {
+    left: calc(-100% - 5rem);
+}
+
+.scc_city3, .scc_truck3 {
+    left: calc(-200% - 10rem);
+}
+
+.scc_city4, .scc_truck4 {
+    left: calc(-300% - 15rem);
+}
+
+.scc_city5, .scc_truck5 {
+    left: calc(-400% - 20rem);
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Animated Vertical and Horizontal Bars</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            overflow: hidden; /* 防止滚动条 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            display: flex;
+            width: 100vw; /* 让容器占满屏幕宽度 */
+            height: 100vh; /* 让容器占满屏幕高度 */
+            position: relative;
+        }
+
+        /* 竖条的样式 */
+        .vertical-bar {
+            width: 16.66%; /* 每个竖条占屏幕宽度的六分之一，6个竖条正好占满 */
+            height: 100%; /* 竖条的高度占满屏幕 */
+            opacity: 0; /* 初始时竖条不可见 */
+            animation: slide 2s ease-out forwards; /* 动画持续2秒，停留在最后状态 */
+            will-change: transform; /* 提前告诉浏览器会变换transform属性，提高性能 */
+        }
+
+        /* 横条的样式 */
+        .horizontal-bar {
+            width: 100%; /* 横条宽度占满屏幕 */
+            height: 16.66%; /* 横条的高度为屏幕的六分之一 */
+            opacity: 0; /* 初始时横条不可见 */
+            animation: slide-up 2s ease-out forwards; /* 动画持续2秒，停留在最后状态 */
+            position: absolute;
+            top: 0; /* 从屏幕底部开始 */
+            background-color: #3498db; /* 横条颜色 */
+            will-change: transform; /* 提高性能 */
+            animation-delay: 1.2s; /* 横条延迟1.2秒后开始动画，等竖条动画结束 */
+        }
+
+        /* 竖条的动画效果 */
+        @keyframes slide {
+            0% {
+                transform: translateX(100vw); /* 动画开始时，竖条位于右侧外面 */
+                opacity: 0; /* 初始时竖条不可见 */
+            }
+            100% {
+                transform: translateX(0); /* 动画结束时，竖条移到它的最终位置，即屏幕左侧 */
+                opacity: 1; /* 动画结束后，竖条可见 */
+            }
+        }
+
+        /* 横条的动画效果 */
+        @keyframes slide-up {
+            0% {
+                transform: translateY(100vh); /* 横条从屏幕底部外部开始 */
+                opacity: 0; /* 初始时横条不可见 */
+            }
+            100% {
+                transform: translateY(0); /* 横条移动到屏幕顶部 */
+                opacity: 1; /* 动画结束后，横条可见 */
+            }
+        }
+
+        /* 通过延迟控制竖条的出现顺序 */
+        .vertical-bar:nth-child(1) {
+            animation-delay: 0s;
+            background-color: #ff5733; /* 第一竖条颜色 */
+        }
+        .vertical-bar:nth-child(2) {
+            animation-delay: 0.2s;
+            background-color: #33ff57; /* 第二竖条颜色 */
+        }
+        .vertical-bar:nth-child(3) {
+            animation-delay: 0.4s;
+            background-color: #3357ff; /* 第三竖条颜色 */
+        }
+        .vertical-bar:nth-child(4) {
+            animation-delay: 0.6s;
+            background-color: #ff33a1; /* 第四竖条颜色 */
+        }
+        .vertical-bar:nth-child(5) {
+            animation-delay: 0.8s;
+            background-color: #f0e02c; /* 第五竖条颜色 */
+        }
+        .vertical-bar:nth-child(6) {
+            animation-delay: 1s;
+            background-color: #f0a02c; /* 第六竖条颜色 */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- 创建6个竖条，每个竖条有不同的颜色 -->
+        <div class="vertical-bar"></div>
+        <div class="vertical-bar"></div>
+        <div class="vertical-bar"></div>
+        <div class="vertical-bar"></div>
+        <div class="vertical-bar"></div>
+        <div class="vertical-bar"></div>
+
+        <!-- 创建一个横条，从下往上移动到顶部 -->
+        <div class="horizontal-bar"></div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+/* 通用动画样式 */
+.logo {
+    animation: logoEnter 1.6s ease-out forwards;
+    width: 100%;
+    height: 100%;
+}
+
+/* 通用类清理 */
+.cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8, .cls-9, 
+.cls-10, .cls-11, .cls-12, .cls-13, .cls-14, .cls-15, 
+.thinking_sun .cls-1, .thinking_sun .cls-2, .thinking_sun .cls-3, .thinking_sun .cls-4, 
+.thinking_sun .cls-5, .thinking_sun .cls-6, .thinking_sun .cls-7, .thinking_sun .cls-8, 
+.thinking_sun .cls-9, .thinking_sun .cls-10, .thinking_sun .cls-11,
+#ink_sum .cls-1, #ink_sum .cls-2, #ink_sum .cls-3, #ink_sum .cls-4, #ink_sum .cls-5, 
+#ink_sum .cls-6, #ink_sum .cls-7, #ink_sum .cls-8, #ink_sum .cls-9, #ink_sum .cls-10, 
+#ink_sum .cls-11, #ink_sum .cls-12, #ink_sum .cls-13, #ink_sum .cls-14, #ink_sum .cls-15, 
+#ink_sum .cls-16, #ink_sum .cls-17 {
+    stroke-width: 0;
+}
+
+/* logo 动画 */
+@keyframes logoEnter {
+    0% {
+        opacity: 0;
+        transform: translateX(-10rem) scale(0.8) translateY(5rem);
+        filter: blur(4px);
+    }
+    60% {
+        opacity: 1;
+        transform: translateX(1rem) scale(1.05) translateY(-1rem);
+        filter: blur(0);
+    }
+    100% {
+        transform: translateX(0) scale(1) translateY(0);
+        filter: none;
+    }
+}
+
+/* logo 默认样式 */
+.logo_sum {
+    width: 30%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+/* 响应式 logo 尺寸调整 */
+@media (max-width: 426px) {
+    .logo_sum { width: 80%; }
+}
+
+@media (max-width: 321px) {
+    .logo_sum { width: 100%; }
+}
+
+
+.book_sun {
+  display: block;       /* 防止 svg 有默认 margin */
+  width: auto;          /* 不要撑满 */
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* 默认配色定义（基础灰调） */
+.cls-1 { fill: #ffffff; }
+.cls-2 { fill: #7d7d7d; }
+.cls-3 { fill: #6f6f6f; }
+.cls-4 { fill: #424242; }
+.cls-5 { fill: #7b7b7b; }
+.cls-6 { fill: #9a9a9a; }
+.cls-7 { fill: #6e6e6e; }
+.cls-8 { fill: #999; }
+.cls-9 { fill: #6c6c6c; }
+.cls-10 { fill: #6a6a6a; }
+.cls-11 { fill: gray; }
+.cls-12 { fill: #6d6d6d; }
+.cls-13 { fill: #7f7f7f; }
+.cls-14 { fill: #f0f0f0; }
+.cls-15 { fill: #d8d8d8; }
+
+/* sun_img 专属配色 */
+.sun_img .cls-1 { fill: #5777b9; }
+.sun_img .cls-2 { fill: #2d407b; }
+.sun_img .cls-3, .sun_img .cls-4 { fill: #2c3f7b; }
+.sun_img .cls-5 { fill: #5676b9; }
+.sun_img .cls-6 { fill: #5776b9; }
+
+/* thinking_sun 配色 */
+.thinking_sun .cls-1 { fill: #5672b1; }
+.thinking_sun .cls-2 { fill: #5974b4; }
+.thinking_sun .cls-3 { fill: #5874b4; }
+.thinking_sun .cls-4 { fill: #5773b2; }
+.thinking_sun .cls-5 { fill: #5672b0; }
+.thinking_sun .cls-6 { fill: #2c4078; }
+.thinking_sun .cls-7 { fill: #2e427a; }
+.thinking_sun .cls-8 { fill: #2d4179; }
+.thinking_sun .cls-9, .thinking_sun .cls-14 { fill: #2e417a; }
+.thinking_sun .cls-10 { fill: #5975b6; }
+.thinking_sun .cls-11 { fill: #5571af; }
+
+/* ink_sum 配色 */
+#ink_sum .cls-1 { fill: #5672b1; }
+#ink_sum .cls-2 { fill: #5974b4; }
+#ink_sum .cls-3 { fill: #5d79b7; }
+#ink_sum .cls-4 { fill: #304376; }
+#ink_sum .cls-5 { fill: #314477; }
+#ink_sum .cls-6 { fill: #5874b4; }
+#ink_sum .cls-7 { fill: #5773b2; }
+#ink_sum .cls-8 { fill: #5672b0; }
+#ink_sum .cls-9 { fill: #2c4078; }
+#ink_sum .cls-10 { fill: #5d7ab6; }
+#ink_sum .cls-11 { fill: #2e427a; }
+#ink_sum .cls-12 { fill: #2d4179; }
+#ink_sum .cls-13 { fill: #5e7ab7; }
+#ink_sum .cls-14 { fill: #2e417a; }
+#ink_sum .cls-15 { fill: #5975b6; }
+#ink_sum .cls-16 { fill: #5571af; }
+#ink_sum .cls-17 { fill: #5d7ab7; }
+#ink_sum .cls-18 { display: none; }
+
+.book_sun .cls-1 {fill: #5676b9;}
+.book_sun .cls-2 {fill: #2c4078;}
