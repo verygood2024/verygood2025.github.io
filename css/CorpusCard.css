@@ -1,0 +1,76 @@
+/* 卡片容器 */
+.head-content {
+    flex-wrap: wrap;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 16px;
+    padding: 12px;
+}
+
+.card {
+    width: 180px;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+    position: relative;
+    background-image: url("../image/d6464604e1e77ba63738cf203d8eafc2.png");
+    background-size: cover;           /* 铺满整个区域，可能裁剪 */
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* 卡片图片 */
+.card img {
+    width: 100%;
+    height: 200px; /* 固定高度，保持竖直长方形 */
+    object-fit: cover; /* 保证图片不变形，裁剪 */
+}
+
+/* 让链接覆盖整个卡片 */
+.card a {
+    display: block;
+    position: absolute; /* 使用绝对定位覆盖整个卡片 */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0); /* 透明背景 */
+    color: transparent; /* 链接文本透明 */
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* 当鼠标悬停时，改变链接的背景色 */
+.card a:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* 增加透明的背景色 */
+    color: white; /* 悬停时文字变为白色 */
+}
+
+/* 电脑端，一行显示六个卡片 */
+@media (min-width: 1024px) {
+    .card {
+        width: calc((100% - 5 * 16px) / 6); /* 每行6个，考虑gap共5个 */
+    }
+}
+
+/* 手机版，一行显示两个卡片 */
+@media (max-width: 767px) {
+    .card {
+        width: calc((100% - 16px) / 2); /* 每行2个卡片，1个 gap */
+    }
+}
+
+
+/* 中等屏幕，适配平板，默认一行3个卡片 */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .card {
+        width: calc((100% - 2 * 16px) / 3); /* 每行3个，考虑gap共2个 */
+    }
+}
+
