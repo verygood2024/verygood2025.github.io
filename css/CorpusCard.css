@@ -6,6 +6,7 @@
     align-items: center;
     justify-content: flex-start;
     width: 100%;
+    height: auto;
     gap: 16px;
     padding: 12px;
 }
@@ -13,23 +14,60 @@
 .card {
     width: 180px;
     height: 300px;
-    border-radius: 10px;
-    overflow: hidden;
+    border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    transition: transform 0.3s;
+    opacity: 0;
     position: relative;
     background-image: url("../image/d6464604e1e77ba63738cf203d8eafc2.png");
     background-size: cover;           /* 铺满整个区域，可能裁剪 */
     background-repeat: no-repeat;
     background-position: center;
+    transform: translateX(-100vw);
 }
 
-/* 卡片图片 */
-.card img {
-    width: 100%;
-    height: 200px; /* 固定高度，保持竖直长方形 */
-    object-fit: cover; /* 保证图片不变形，裁剪 */
+.card.start {
+    animation-name: slide;
+    animation-fill-mode: both;
+    animation-timing-function: ease;
+}
+
+.card.end {
+    animation: slide-end 2s ease-out forwards;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(-100vw);
+        opacity: 0;
+        border-radius: 0px;
+    }
+    50% {
+        border-radius: 0px;
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+        border-radius: 12px;
+    }
+}
+
+@keyframes slide-end {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+        border-radius: 12px;
+    }
+    50% {
+        border-radius: 0px;
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100vw);
+        opacity: 0;
+        border-radius: 0px;
+    }
 }
 
 /* 让链接覆盖整个卡片 */
