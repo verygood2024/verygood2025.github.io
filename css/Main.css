@@ -34,6 +34,8 @@ p, img {
 
 /* body 结构与背景 */
 body {
+    width: 100%;
+    height: auto;
     font-family: var(--font-family), serif;
     letter-spacing: var(--letter-spacing);
     font-weight: var(--font-weight);

@@ -1,8 +1,7 @@
 const scrollbox = {
     container: document.querySelector(".scrollbox_container"),
     cards: [...document.querySelectorAll(".scrollbox_container_card")],
-    //trucks: [...document.querySelectorAll(".scc_truck")],
-    //citys: [...document.querySelectorAll(".scc_city")],
+    overlay: document.getElementById('overlay'),
     trigger_distance: 0,
     border_distance: 0,
     distance: 0,
@@ -12,9 +11,9 @@ const scrollbox = {
         this.trigger_distance = _scrollbox.offsetTop;
         this.border_distance = _scrollbox.offsetTop + _scrollbox.offsetHeight - innerHeight;
     },
+
     move() {
-        if (scrollY >= this.trigger_distance &&
-            scrollY <= this.border_distance) {
+        if (scrollY >= this.trigger_distance && scrollY <= this.border_distance) {
             this.distance = scrollY - this.trigger_distance;
             this.container.style.transform = `translateY(${this.distance}px)`;
             let distance_x =
@@ -22,12 +21,10 @@ const scrollbox = {
                 (this.container.offsetWidth - innerWidth);
             for (let i = 0; i < this.cards.length; i++) {
                 this.cards[i].style.transform = `translateX(${-distance_x}px)`;
-                //this.trucks[i].style.transform = `translateX(${distance_x * 1.2}px)`;
-                //this.citys[i].style.transform = `translateX(${distance_x * 0.5}px)`;
             }
         }
-    }
-};
+    },
+}
 scrollbox.resize();
 window.addEventListener("resize", () => {
     scrollbox.resize();

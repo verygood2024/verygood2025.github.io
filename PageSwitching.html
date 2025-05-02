@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Animated Vertical and Horizontal Bars</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/Logo.css">
+    <link rel="stylesheet" href="css/Main.css">
     <style>
         body, html {
             height: 100%;
@@ -11,91 +13,144 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #f0f0f0;
+            background: #f0f0f0;
         }
 
         .container {
             display: flex;
-            width: 100vw; /* 让容器占满屏幕宽度 */
-            height: 100vh; /* 让容器占满屏幕高度 */
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
             position: relative;
+            animation: showImage 2s ease forwards;
+            animation-delay: 2s; /* 等待所有竖条动画完成后再变图 */
         }
 
         /* 竖条的样式 */
-        .vertical-bar {
+        .vertical_bar {
             width: 16.66%; /* 每个竖条占屏幕宽度的六分之一，6个竖条正好占满 */
             height: 100%; /* 竖条的高度占满屏幕 */
             opacity: 0; /* 初始时竖条不可见 */
-            animation: slide 2s ease-out forwards; /* 动画持续2秒，停留在最后状态 */
+            animation: slide 4s ease-out forwards; /* 动画持续2秒，停留在最后状态 */
             will-change: transform; /* 提前告诉浏览器会变换transform属性，提高性能 */
+
         }
 
         /* 横条的样式 */
-        .horizontal-bar {
-            width: 100%; /* 横条宽度占满屏幕 */
-            height: 16.66%; /* 横条的高度为屏幕的六分之一 */
-            opacity: 0; /* 初始时横条不可见 */
-            animation: slide-up 2s ease-out forwards; /* 动画持续2秒，停留在最后状态 */
+        .horizontal-barB {
+            display: flex;              /* 开启 flex 布局 */
+            align-items: center;        /* 垂直居中 */
+            justify-content: flex-start;/* 水平靠左 */
+
+            width: 100%;
+            height: 25%;
+            opacity: 0;
+            animation: slide-up 4s ease-out forwards;
             position: absolute;
-            top: 0; /* 从屏幕底部开始 */
-            background-color: #3498db; /* 横条颜色 */
-            will-change: transform; /* 提高性能 */
-            animation-delay: 1.2s; /* 横条延迟1.2秒后开始动画，等竖条动画结束 */
+            top: 0;
+            will-change: transform;
+            animation-delay: 2s;
+            font-size: 6rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.9);
+
+            background-color: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(0px);
+            -webkit-backdrop-filter: blur(0px);
+            border: 0.8px solid rgba(255, 255, 255, 0.18);
+            box-shadow: rgba(142, 142, 142, 0.19) 0px 6px 15px 0px;
         }
 
-        /* 竖条的动画效果 */
-        @keyframes slide {
-            0% {
-                transform: translateX(100vw); /* 动画开始时，竖条位于右侧外面 */
-                opacity: 0; /* 初始时竖条不可见 */
-            }
-            100% {
-                transform: translateX(0); /* 动画结束时，竖条移到它的最终位置，即屏幕左侧 */
-                opacity: 1; /* 动画结束后，竖条可见 */
-            }
-        }
 
         /* 横条的动画效果 */
         @keyframes slide-up {
             0% {
-                transform: translateY(100vh); /* 横条从屏幕底部外部开始 */
-                opacity: 0; /* 初始时横条不可见 */
+                transform: translateY(-100vh); /* 从屏幕顶部外部开始 */
+                opacity: 0;
+                border-radius: 0 0 0 0; /* 初始为直角 */
+                background-color: rgba(255, 255, 255, 0.25);
+                backdrop-filter: blur(30px);
+                -webkit-backdrop-filter: blur(30px);
+                border: 0.8px solid rgba(255, 255, 255, 0.18);
+                box-shadow: rgba(142, 142, 142, 0.19) 0px 6px 15px 0px;
+                -webkit-box-shadow: rgba(142, 142, 142, 0.19) 0px 6px 15px 0px;
+            }
+            50% {
+                transform: translateY(0);
+                opacity: 1;
+                border-radius: 0 0 0 0;
             }
             100% {
-                transform: translateY(0); /* 横条移动到屏幕顶部 */
-                opacity: 1; /* 动画结束后，横条可见 */
+                transform: translateY(0);
+                opacity: 1;
+                border-radius: 0 0 3rem 3rem; /* 最终圆角 */
+                background-color: rgba(255, 255, 255, 0.05);
+                backdrop-filter: blur(0px);
+                -webkit-backdrop-filter: blur(0px);
+                border: 0.8px solid rgba(255, 255, 255, 0.18);
+                box-shadow: rgba(142, 142, 142, 0.19) 0px 6px 15px 0px;
             }
         }
 
-        /* 通过延迟控制竖条的出现顺序 */
-        .vertical-bar:nth-child(1) {
+        /* 动画定义 */
+        @keyframes slide {
+            0% {
+                transform: translateX(100vw);
+                opacity: 0;
+            }
+            50% {
+                transform: translateX(0);
+                opacity: 1;
+                background-color: #15347b;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 0;
+            }
+        }
+
+        /* 最终容器背景图动画 */
+        @keyframes showImage {
+            0% {
+                background-color: #15347b;
+            }
+            100% {
+                background-color: #15347b;
+                background-image: url("./image/1.png");
+                background-size: cover;
+                background-position: center;
+            }
+        }
+
+        /* 每条的延迟与初始色 */
+        .vertical_bar:nth-child(1) {
             animation-delay: 0s;
-            background-color: #ff5733; /* 第一竖条颜色 */
+            background-color: #1e4aa5;
         }
-        .vertical-bar:nth-child(2) {
+        .vertical_bar:nth-child(2) {
             animation-delay: 0.2s;
-            background-color: #33ff57; /* 第二竖条颜色 */
+            background-color: #2b5dc2;
         }
-        .vertical-bar:nth-child(3) {
+        .vertical_bar:nth-child(3) {
             animation-delay: 0.4s;
-            background-color: #3357ff; /* 第三竖条颜色 */
+            background-color: #3d76d4;
         }
-        .vertical-bar:nth-child(4) {
+        .vertical_bar:nth-child(4) {
             animation-delay: 0.6s;
-            background-color: #ff33a1; /* 第四竖条颜色 */
+            background-color: #5990e0;
         }
-        .vertical-bar:nth-child(5) {
+        .vertical_bar:nth-child(5) {
             animation-delay: 0.8s;
-            background-color: #f0e02c; /* 第五竖条颜色 */
+            background-color: #7daff1;
         }
-        .vertical-bar:nth-child(6) {
+        .vertical_bar:nth-child(6) {
             animation-delay: 1s;
-            background-color: #f0a02c; /* 第六竖条颜色 */
+            background-color: #a2c5f9;
         }
     </style>
 </head>
 <body>
-
     <div class="container">
         <!-- 创建6个竖条，每个竖条有不同的颜色 -->
         <div class="vertical-bar"></div>
@@ -106,8 +161,16 @@
         <div class="vertical-bar"></div>
 
         <!-- 创建一个横条，从下往上移动到顶部 -->
-        <div class="horizontal-bar"></div>
+        <div class="horizontal-barB">
+            <svg class="book_sun" id="book_sun" data-name="图层 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+              <path class="cls-1" d="M38.9,33.3H5.6c-3.1,0-5.6,2.5-5.6,5.6v122.2c0,3.1,2.5,5.6,5.6,5.6h33.3c3.1,0,5.6-2.5,5.6-5.6V38.9c0-3.1-2.5-5.6-5.6-5.6ZM33.3,66.7H11.1v-11.1h22.2v11.1ZM94.4,33.3h-33.3c-3.1,0-5.6,2.5-5.6,5.6v122.2c0,3.1,2.5,5.6,5.6,5.6h33.3c3.1,0,5.6-2.5,5.6-5.6V38.9c0-3.1-2.5-5.6-5.6-5.6ZM88.9,66.7h-22.2v-11.1h22.2v11.1Z"/>
+              <path class="cls-1" d="M132.8,41.9l-29.8,15c-2.7,1.4-3.8,4.7-2.5,7.5l50,99.2c1.4,2.7,4.7,3.8,7.5,2.5l29.8-15c2.7-1.4,3.8-4.7,2.5-7.5l-50-99.2c-1.4-2.7-4.7-3.8-7.5-2.5Z"/>
+              <path class="cls-1" d="M161.1,161.1c0,3.1-2.5,5.6-5.6,5.6s-5.6-2.5-5.6-5.6,2.5-5.6,5.6-5.6,5.6,2.5,5.6,5.6Z"/>
+              <rect class="cls-2" x="10" y="53.6" width="24.5" height="15.1" rx="3.2" ry="3.2"/>
+              <rect class="cls-2" x="65.5" y="53.6" width="24.5" height="15.1" rx="3.2" ry="3.2"/>
+            </svg>
+            文集
+        </div>
     </div>
-
 </body>
 </html>
