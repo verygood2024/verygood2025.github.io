@@ -1,32 +1,49 @@
-const overlay = document.getElementById('文集');
-const horizontal_bars = document.querySelector('.horizontal_bars');
+function initOverlayScrollWatcher(overlayEl, triggerEl, cardEls) {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // 元素进入视口
+                triggerEl.classList.remove('end');
+                cardEls.forEach(card => card.classList.remove('end'));
+                triggerEl.classList.add('start');
+                cardEls.forEach(card => card.classList.add('start'));
+                applyCardAnimations?.();
+            } else {
+                // 元素离开视口
+                triggerEl.classList.remove('start');
+                cardEls.forEach(card => card.classList.remove('start'));
+                triggerEl.classList.add('end');
+                cardEls.forEach(card => card.classList.add('end'));
+                applyCardAnimations?.();
+            }
+        });
+    }, {
+        threshold: 0.1  // 元素至少有10%可见时算“进入”
+    });
 
-let lastScrollY = window.scrollY;
-
-function checkOverlayFullScreen() {
-    const rect = overlay.getBoundingClientRect();
-    const scrollingUp = window.scrollY < lastScrollY;
-
-    const fullyCoversViewport =
-        rect.top <= 0 &&
-        rect.bottom >= window.innerHeight;
-
-    if (fullyCoversViewport) {
-        horizontal_bars.classList.remove('end');
-        horizontal_bars.classList.add('start');
-        cards.forEach(card => card.classList.add('start'));
-        applyCardAnimations();
-    } else if (scrollingUp) {
-        // 向上滚动时，视口中不再完全是 #文集
-        horizontal_bars.classList.remove('start');
-        horizontal_bars.classList.add('end');
-    }
-
-    lastScrollY = window.scrollY;
+    observer.observe(overlayEl);
 }
 
-window.addEventListener('scroll', checkOverlayFullScreen);
-window.addEventListener('resize', checkOverlayFullScreen);
 
-// 初始检查一次（防止页面加载时已在中间）
-checkOverlayFullScreen();
+
+const overlay = document.getElementById('文集');
+const horizontal_bars = document.querySelector('.horizontal_bars');
+const cards_animation = document.querySelectorAll('.card');
+
+initOverlayScrollWatcher(
+    document.getElementById('文集'),
+    document.getElementById('文集横条'),
+    document.querySelectorAll('#文集卡片 .card')
+);
+
+initOverlayScrollWatcher(
+    document.getElementById('集子'),
+    document.getElementById('集子横条'),
+    document.querySelectorAll('#集子卡片 .card')
+);
+
+initOverlayScrollWatcher(
+    document.getElementById('作者'),
+    document.getElementById('作者方形'),
+    document.querySelectorAll('#作者卡片 .card')
+);

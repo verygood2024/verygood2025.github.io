@@ -15,6 +15,6 @@ document.querySelectorAll('.card a').forEach(link => {
             } else {
                 window.location.href = url;
             }
-        }, 500); // 与 CSS 动画时间一致
+        }, 5000); // 与 CSS 动画时间一致
     });
 });

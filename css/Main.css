@@ -21,8 +21,6 @@ div {
     font-size: 2vmin;
     box-sizing: border-box;
     overflow-x: hidden;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
 }
 
 /* 禁用文本/图片交互 */
@@ -44,8 +42,4 @@ body {
     align-items: stretch;
     background: linear-gradient(to right, #5F9EA0, #4682B4, #B0C4DE);
     will-change: transform;
-}
-
-*::-webkit-scrollbar {
-    display: none;  /* Chrome, Safari, and Opera */
 }

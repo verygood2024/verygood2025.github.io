@@ -8,7 +8,7 @@ function applyCardAnimations() {
         const averageDelay = totalAnimationDuration / (numCards - 1);
 
         cards.forEach((card, index) => {
-            if (card.classList.contains('start')) {
+            if (card.classList.contains('start') || card.classList.contains('end')) {
                 if (index === 0) {
                     card.style.animationDelay = '0s';
                 } else {
@@ -17,13 +17,17 @@ function applyCardAnimations() {
                 }
                 card.style.animationDuration = `${totalAnimationDuration}s`;
             } else {
-                // 如果未启用动画，清除之前设置（防止残留）
+                // 清除未启用动画的卡片样式
                 card.style.animationDelay = '';
                 card.style.animationDuration = '';
             }
         });
-    } else if (numCards === 1 && cards[0].classList.contains('start')) {
+    } else if (
+        numCards === 1 &&
+        (cards[0].classList.contains('start') || cards[0].classList.contains('end'))
+    ) {
         cards[0].style.animationDelay = '0s';
         cards[0].style.animationDuration = `${totalAnimationDuration}s`;
     }
 }
+
