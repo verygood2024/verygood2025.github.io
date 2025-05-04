@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
@@ -38,142 +38,104 @@
     <link rel="stylesheet" href="css/HorizontalBars.css">
     <link rel="stylesheet" href="css/CorpusCard.css">
     <link rel="stylesheet" href="css/Footer.css">
-    <style>
-        /* 渐变动画 */
-        @keyframes gradientAnimation {
-            0% {
-                background-position: 0% 50%;
-            }
+    <style>/* 渐变动画 */
+  @keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
 
-            50% {
-                background-position: 100% 50%;
-            }
+  /* 上下浮动动画 */
+  @keyframes floatUpDown {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
 
-            100% {
-                background-position: 0% 50%;
-            }
-        }
+  /* 加载器样式 */
+  .gradient-loader {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-family), serif;
+    color: white;
+    text-transform: uppercase;
+    background: linear-gradient(45deg, #5F9EA0, #4682B4, #B0C4DE);
+    background-size: 300% 300%;
+    animation: gradientAnimation 3s ease infinite;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    overflow: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+  }
 
-        /* 渐变加载器样式 */
-        .gradient-loader {
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: var(--font-family), serif;
-            /* 使用思源宋体 */
-            font-size: 2rem;
-            color: white;
-            text-transform: uppercase;
-            background: linear-gradient(45deg, #5F9EA0, #4682B4, #B0C4DE);
-            background-size: 300% 300%;
-            animation: gradientAnimation 3s ease infinite;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 9999;
-            overflow: hidden;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
+  .gradient-loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
 
-        /* 默认隐藏样式 */
-        .gradient-loader.hidden {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
+  /* 主标题样式 */
+  .loader-title {
+    font-size: 3rem; /* 调整大小 */
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
 
-        /* 文本样式 */
-        .loader-text {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-        }
-
-        /* 动画效果，文本上下滑动 */
-        .loader-text::after {
-            content: '正在加载...';
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: slide 3s ease-in-out infinite;
-            font-size: 1.5rem;
-        }
-
-        /* 滑动动画 */
-        @keyframes slide {
-            0% {
-                top: 150%;
-                opacity: 0;
-            }
-
-            50% {
-                top: 100%;
-                opacity: 1;
-            }
-
-            100% {
-                top: 150%;
-                opacity: 0;
-            }
-        }
-
-        /* 响应式适配 */
-        @media (max-width: 768px) {
-            .gradient-loader {
-                font-size: 1.5rem;
-            }
-
-            .loader-text::after {
-                font-size: 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .gradient-loader {
-                font-size: 1rem;
-            }
-
-            .loader-text::after {
-                font-size: 0.8rem;
-            }
-        }
+  /* 上下浮动的副标题 */
+  .loading-text {
+    animation: floatUpDown 2s ease-in-out infinite;
+    text-transform: none;
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+  }
     </style>
 </head>
 
+
 <body>
+    <div class="gradient-loader" id="loading-box">
+        <div class="loader-title">yesandnoandperhaps</div>
+        <div class="loading-text">正在加载中……</div>
+    </div>
     <script>
-        const preloader = (() => {
+          const preloader = (() => {
             const loadingBox = document.getElementById('loading-box');
             return {
-                endLoading: () => {
-                    if (!loadingBox) return;
-                    document.body.style.overflow = 'auto'; // 恢复滚动
-                    loadingBox.classList.add('hidden'); // 隐藏加载动画
-                },
-                initLoading: () => {
-                    if (!loadingBox) return;
-                    document.body.style.overflow = 'hidden'; // 禁止滚动
-                    loadingBox.classList.remove('hidden'); // 显示加载动画
-                }
+              endLoading: () => {
+                if (!loadingBox) return;
+                document.body.style.overflow = 'auto'; // 恢复滚动
+                loadingBox.classList.add('hidden'); // 隐藏加载动画
+              },
+              initLoading: () => {
+                if (!loadingBox) return;
+                document.body.style.overflow = 'hidden'; // 禁止滚动
+                loadingBox.classList.remove('hidden'); // 显示加载动画
+              }
             };
-        })();
+          })();
 
-        // 初始化加载动画
-        preloader.initLoading();
+          // 初始化加载动画
+          preloader.initLoading();
 
-        // 页面加载完成后隐藏加载动画
-        window.addEventListener('load', () => {
+          // 页面加载完成后隐藏加载动画
+          window.addEventListener('load', () => {
             try {
-                preloader.endLoading();
+              preloader.endLoading();
             } catch (error) {
-                console.error('Error during loading cleanup:', error);
+              console.error('Error during loading cleanup:', error);
             }
-        });
-    </script>
+          });
 
+    </script>
     <div class="head">
         <div class="img1">
             <div class="img0">
@@ -736,24 +698,23 @@
 
 
     <footer>
-      <section class="left">
-        <strong>&copy; 2024-2025 yesandnoandperhaps</strong><br>
-        域名：<a href="https://yesandnoandperhaps.cn" target="_blank">yesandnoandperhaps.cn</a>、
-        <a href="https://yesandno.cn" target="_blank">yesandno.cn</a><br>公众号：yesandnoandperhaps<br>左岸是确定性，右岸是可能性，我们造舟。
-      </section>
-      <section class="right">
-        合作链接：
-          <a href="http://yamlim.org/">世界钦廉人</a>、
-          <a href="https://zhichun.yesandno.cn" target="_blank">知春社</a>、
-          <a href="https://xlyg.fun" target="_blank">穸阑隐阁文学社</a>
-          <br>
-        合作公众号：
-          <a href="https://mp.weixin.qq.com/s/2QfcxvH8zLojwqljIk1mfQ" target="_blank">世界钦廉人</a>
-          、<a href="https://mp.weixin.qq.com/s/DvgUIkTW10UZAEkt-BFJ_g" target="_blank">知春社</a>
-          、<a href="https://mp.weixin.qq.com/s/LudcxAEAQ77vQxSN_zHs-A" target="_blank">穸阑隐阁文学社</a>
-      </section>
-    </footer>
-
+  <section class="left">
+    <strong>&copy; 2024-2025 yesandnoandperhaps</strong><br>
+    域名：<a href="https://yesandnoandperhaps.cn" target="_blank">yesandnoandperhaps.cn</a>、
+    <a href="https://yesandno.cn" target="_blank">yesandno.cn</a><br>公众号：yesandnoandperhaps<br>左岸是确定性，右岸是可能性，我们造舟。
+  </section>
+  <section class="right">
+    合作链接：
+      <a href="http://yamlim.org/">世界钦廉人</a>、
+      <a href="https://zhichun.yesandno.cn" target="_blank">知春社</a>、
+      <a href="https://xlyg.fun" target="_blank">穸阑隐阁文学社</a>
+      <br>
+    合作公众号：
+      <a href="https://mp.weixin.qq.com/s/2QfcxvH8zLojwqljIk1mfQ" target="_blank">世界钦廉人</a>
+      、<a href="https://mp.weixin.qq.com/s/DvgUIkTW10UZAEkt-BFJ_g" target="_blank">知春社</a>
+      、<a href="https://mp.weixin.qq.com/s/LudcxAEAQ77vQxSN_zHs-A" target="_blank">穸阑隐阁文学社</a>
+  </section>
+</footer>
     <script src="js/CorpusCard.js"></script>
     <script src="js/HorizontalScrolling.js"></script>
     <script src="js/Head.js"></script>
