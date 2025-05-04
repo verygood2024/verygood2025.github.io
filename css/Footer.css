@@ -1,0 +1,39 @@
+  footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #f8f9fa;
+    padding: 30px 40px;
+    font-size: 14px;
+    color: #444;
+    border-top: 1px solid #ddd;
+  }
+
+  footer section.left {
+    text-align: left;
+  }
+
+  footer section.right {
+    text-align: right;
+  }
+
+  footer a {
+    color: #444;
+    text-decoration: none;
+  }
+
+  footer a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    footer {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    footer section.right {
+      text-align: center;
+      margin-top: 20px;
+    }
+  }
+
