@@ -1,0 +1,59 @@
+/* 渐变动画 */
+  @keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* 上下浮动动画 */
+  @keyframes floatUpDown {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  /* 加载器样式 */
+  .gradient-loader {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-family), serif;
+    color: white;
+    text-transform: uppercase;
+    background: linear-gradient(45deg, #5F9EA0, #4682B4, #B0C4DE);
+    background-size: 300% 300%;
+    animation: gradientAnimation 3s ease infinite;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    overflow: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+  }
+
+  .gradient-loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  /* 主标题样式 */
+  .loader-title {
+    font-size: 3rem; /* 调整大小 */
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  /* 上下浮动的副标题 */
+  .loading-text {
+  animation: floatUpDown 2s ease-in-out infinite;
+  text-transform: none;
+  font-size: 1.5rem;
+  margin-top: 1.5rem; /* 原来是 0.5rem */
+}

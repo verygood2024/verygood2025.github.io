@@ -26,14 +26,21 @@
   }
 
   @media (max-width: 768px) {
-    footer {
-      grid-template-columns: 1fr;
-      text-align: center;
-    }
-
-    footer section.right {
-      text-align: center;
-      margin-top: 20px;
-    }
+  footer {
+    grid-template-columns: 1fr; /* 垂直堆叠 */
   }
+
+  footer section.left,
+  footer section.right {
+    text-align: left; /* 都靠左对齐 */
+    margin-top: 0;     /* 移除右边额外的间距 */
+  }
+
+  footer section.right {
+    margin-top: 10px;  /* 可选：加点间距以区分上下两块 */
+  }
+}
+
+
+
 

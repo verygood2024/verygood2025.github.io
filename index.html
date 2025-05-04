@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>yesandnoandperhaps-左岸是确定性，右岸是可能性，我们造舟。</title>
+    <title>yesandnoandperhaps</title>
 
     <!-- SEO 元信息 -->
     <meta name="description" content="yesandnoandperhaps 是一个文学网站，收集各种今人所写文章，欢迎向我们投稿！">
@@ -16,7 +16,7 @@
 
 
     <!-- Open Graph标签 -->
-    <meta property="og:title" content="yesandnoandperhaps-左岸是确定性，右岸是可能性，我们造舟。">
+    <meta property="og:title" content="yesandnoandperhaps">
     <meta property="og:description" content="探索文字背后的思考，yesandnoandperhaps 是你心灵的栖息地。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.yesandno.cn/">
@@ -24,7 +24,7 @@
 
     <!-- Twitter Card 标签 -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="yesandnoandperhaps-左岸是确定性，右岸是可能性，我们造舟。">
+    <meta name="twitter:title" content="yesandnoandperhaps">
     <meta name="twitter:description" content="探索文字背后的思考，yesandnoandperhaps 是你心灵的栖息地。">
     <meta name="twitter:image" content="https://yesandnoandperhaps.cn/img/app_ic-playstore.png">
 
@@ -38,66 +38,7 @@
     <link rel="stylesheet" href="css/HorizontalBars.css">
     <link rel="stylesheet" href="css/CorpusCard.css">
     <link rel="stylesheet" href="css/Footer.css">
-    <style>/* 渐变动画 */
-  @keyframes gradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-
-  /* 上下浮动动画 */
-  @keyframes floatUpDown {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
-
-  /* 加载器样式 */
-  .gradient-loader {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: var(--font-family), serif;
-    color: white;
-    text-transform: uppercase;
-    background: linear-gradient(45deg, #5F9EA0, #4682B4, #B0C4DE);
-    background-size: 300% 300%;
-    animation: gradientAnimation 3s ease infinite;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-    overflow: hidden;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
-  }
-
-  .gradient-loader.hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-  }
-
-  /* 主标题样式 */
-  .loader-title {
-    font-size: 3rem; /* 调整大小 */
-    font-weight: bold;
-    letter-spacing: 1px;
-  }
-
-  /* 上下浮动的副标题 */
-  .loading-text {
-    animation: floatUpDown 2s ease-in-out infinite;
-    text-transform: none;
-    font-size: 1.5rem;
-    margin-top: 0.5rem;
-  }
-    </style>
+    <link rel="stylesheet" href="css/Load.css">
 </head>
 
 
@@ -107,18 +48,21 @@
         <div class="loading-text">正在加载中……</div>
     </div>
     <script>
-          const preloader = (() => {
+            const preloader = (() => {
             const loadingBox = document.getElementById('loading-box');
             return {
               endLoading: () => {
                 if (!loadingBox) return;
-                document.body.style.overflow = 'auto'; // 恢复滚动
-                loadingBox.classList.add('hidden'); // 隐藏加载动画
+                document.body.style.overflow = 'auto';
+                document.documentElement.style.overflow = 'auto';
+                loadingBox.classList.add('hidden');
               },
               initLoading: () => {
                 if (!loadingBox) return;
-                document.body.style.overflow = 'hidden'; // 禁止滚动
-                loadingBox.classList.remove('hidden'); // 显示加载动画
+                window.scrollTo(0, 0);
+                document.body.style.overflow = 'hidden';
+                document.documentElement.style.overflow = 'hidden';
+                loadingBox.classList.remove('hidden');
               }
             };
           })();
@@ -134,7 +78,6 @@
               console.error('Error during loading cleanup:', error);
             }
           });
-
     </script>
     <div class="head">
         <div class="img1">
@@ -698,23 +641,23 @@
 
 
     <footer>
-  <section class="left">
-    <strong>&copy; 2024-2025 yesandnoandperhaps</strong><br>
-    域名：<a href="https://yesandnoandperhaps.cn" target="_blank">yesandnoandperhaps.cn</a>、
-    <a href="https://yesandno.cn" target="_blank">yesandno.cn</a><br>公众号：yesandnoandperhaps<br>左岸是确定性，右岸是可能性，我们造舟。
-  </section>
-  <section class="right">
-    合作链接：
-      <a href="http://yamlim.org/">世界钦廉人</a>、
-      <a href="https://zhichun.yesandno.cn" target="_blank">知春社</a>、
-      <a href="https://xlyg.fun" target="_blank">穸阑隐阁文学社</a>
-      <br>
-    合作公众号：
-      <a href="https://mp.weixin.qq.com/s/2QfcxvH8zLojwqljIk1mfQ" target="_blank">世界钦廉人</a>
-      、<a href="https://mp.weixin.qq.com/s/DvgUIkTW10UZAEkt-BFJ_g" target="_blank">知春社</a>
-      、<a href="https://mp.weixin.qq.com/s/LudcxAEAQ77vQxSN_zHs-A" target="_blank">穸阑隐阁文学社</a>
-  </section>
-</footer>
+      <section class="left">
+        <strong>&copy; 2024-2025 yesandnoandperhaps</strong><br>
+        域名：<a href="https://yesandnoandperhaps.cn" target="_blank">yesandnoandperhaps.cn</a>、
+        <a href="https://yesandno.cn" target="_blank">yesandno.cn</a><br>公众号：yesandnoandperhaps<br>左岸是确定性，右岸是可能性，我们造舟。
+      </section>
+      <section class="right">
+        合作链接：
+          <a href="http://yamlim.org/">世界钦廉人</a>、
+          <a href="https://zhichun.yesandno.cn" target="_blank">知春社</a>、
+          <a href="https://xlyg.fun" target="_blank">穸阑隐阁文学社</a>
+          <br>
+        合作公众号：
+          <a href="https://mp.weixin.qq.com/s/2QfcxvH8zLojwqljIk1mfQ" target="_blank">世界钦廉人</a>
+          、<a href="https://mp.weixin.qq.com/s/DvgUIkTW10UZAEkt-BFJ_g" target="_blank">知春社</a>
+          、<a href="https://mp.weixin.qq.com/s/LudcxAEAQ77vQxSN_zHs-A" target="_blank">穸阑隐阁文学社</a>
+      </section>
+    </footer>
     <script src="js/CorpusCard.js"></script>
     <script src="js/HorizontalScrolling.js"></script>
     <script src="js/Head.js"></script>
