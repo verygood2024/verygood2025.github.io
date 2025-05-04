@@ -38,12 +38,112 @@
     <link rel="stylesheet" href="css/HorizontalBars.css">
     <link rel="stylesheet" href="css/CorpusCard.css">
     <link rel="stylesheet" href="css/Footer.css">
+    <style>
+        /* 渐变动画 */
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* 渐变加载器样式 */
+        .gradient-loader {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: var(--font-family), serif;
+            /* 使用思源宋体 */
+            font-size: 2rem;
+            color: white;
+            text-transform: uppercase;
+            background: linear-gradient(45deg, #5F9EA0, #4682B4, #B0C4DE);
+            background-size: 300% 300%;
+            animation: gradientAnimation 3s ease infinite;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            overflow: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        /* 默认隐藏样式 */
+        .gradient-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        /* 文本样式 */
+        .loader-text {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        /* 动画效果，文本上下滑动 */
+        .loader-text::after {
+            content: '正在加载...';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: slide 3s ease-in-out infinite;
+            font-size: 1.5rem;
+        }
+
+        /* 滑动动画 */
+        @keyframes slide {
+            0% {
+                top: 150%;
+                opacity: 0;
+            }
+
+            50% {
+                top: 100%;
+                opacity: 1;
+            }
+
+            100% {
+                top: 150%;
+                opacity: 0;
+            }
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .gradient-loader {
+                font-size: 1.5rem;
+            }
+
+            .loader-text::after {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gradient-loader {
+                font-size: 1rem;
+            }
+
+            .loader-text::after {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <div class="gradient-loader" id="loading-box">
-        <div class="loader-text">yesandnoandperhaps</div>
-    </div>
     <script>
         const preloader = (() => {
             const loadingBox = document.getElementById('loading-box');
